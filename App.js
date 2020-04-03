@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 
 export default function App() {
+  const [inputGoal, setinputGoal] = useState('')
+  const [courseGoals, setcourseGoals] = useState([])
+
+  const inputHandler = (textInput) => {
+    setinputGoal(textInput)
+  }
+
+  const inputGoalHandler = () => {
+    setcourseGoals(currentGoals => [...courseGoals, inputGoal])
+  }
+
+
   return (
     <View style={styles.screen}>
      <View style={styles.inputfield}>
-       <TextInput placeholder="Course Goals" style={styles.textinput}></TextInput>
-       <Button title="create"></Button>
+       <TextInput 
+       onChangeText={inputHandler} 
+       placeholder="Course Goals" 
+       style={styles.textinput}
+       value={inputGoal}>
+       </TextInput>
+       <Button
+       onPress={inputGoalHandler}
+       title="create"></Button>
      </View>
-     <View/>
+      <View>
+       {courseGoals.map(courseGoal => {
+         return <Text key={courseGoal}>{courseGoal}</Text>
+       })}
+     </View>
     </View>
   );
 }
@@ -26,7 +49,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey', 
     borderWidth: 1, 
     padding: 3, 
-    width: 198
+    width: '80%'
   }
 
 });
