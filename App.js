@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, ScrollView } from 'react-native';
 
 export default function App() {
   const [inputGoal, setinputGoal] = useState('')
@@ -27,11 +27,11 @@ export default function App() {
        onPress={inputGoalHandler}
        title="create"></Button>
      </View>
-      <View>
+      <ScrollView>
        {courseGoals.map(courseGoal => {
-         return <Text key={courseGoal}>{courseGoal}</Text>
+         return <View key={courseGoal} style={styles.list}><Text >{courseGoal}</Text></View>
        })}
-     </View>
+     </ScrollView>
     </View>
   );
 }
@@ -50,6 +50,13 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     padding: 3, 
     width: '80%'
+  },
+  list: {
+    padding: 10,
+    backgroundColor: '#c7c6bf',
+   /*  borderColor: 'purple',
+    borderWidth: 1, */
+    margin: 3
   }
 
 });
