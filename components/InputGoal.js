@@ -13,7 +13,7 @@ const InputGoal = (props) => {
     </TextInput>
     <View style={styles.btnview}>
     <View style={styles.btn}>
-    <Button style={{padding: 10}}
+    <Button color="#38e8d3" style={{padding: 10}}
     onPress={props.clicked/* inputGoalHandler */}
     title="create"></Button>
     </View>

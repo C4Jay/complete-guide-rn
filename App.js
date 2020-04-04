@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-     <Button title="Create goal" onPress={() => setshowtoggle(true)}></Button> 
+     <Button color="yellowgreen" title="Create goal" onPress={() => setshowtoggle(true)}></Button> 
      <InputGoal show={showtoggle} cancelclick={cancelHandler} clicked={inputGoalHandler} onchangefield={inputHandler}></InputGoal>
 
       <FlatList 
