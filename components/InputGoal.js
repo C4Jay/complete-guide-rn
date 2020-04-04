@@ -11,9 +11,17 @@ const InputGoal = (props) => {
     style={styles.textinput}
     value={props.itemtext}>
     </TextInput>
-    <Button
+    <View style={styles.btnview}>
+    <View style={styles.btn}>
+    <Button style={{padding: 10}}
     onPress={props.clicked/* inputGoalHandler */}
     title="create"></Button>
+    </View>
+    <View style={styles.btn}>
+    <Button style={{margin: 5}} color="red" onPress={props.cancelclick} 
+    title="back"></Button>
+    </View>
+    </View>
   </View>
   </Modal>
 )}
@@ -31,6 +39,15 @@ const styles = StyleSheet.create({
         padding: 3, 
         width: '80%',
         marginBottom: 10
+      },
+      btn: {
+        width: '58%'
+      },
+      btnview: {
+        width: '36%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        
       }
 })
 

@@ -15,12 +15,17 @@ export default function App() {
   const inputGoalHandler = () => {
     setcourseGoals(currentGoals => [...courseGoals, {/* key: */ id: Math.random().toString(), value: inputGoal}])
     setshowtoggle(false)
+    setinputGoal('')
   }
 
   const deleteGoalHandler = (idgoal) => {
     setcourseGoals(currentGoals => {
       return currentGoals.filter((goal) => goal.id != idgoal); 
     })
+  }
+
+  const cancelHandler = () => {
+    setshowtoggle(false)
   }
 
 /*   const showtoggleHandler = () => {
@@ -31,7 +36,7 @@ export default function App() {
   return (
     <View style={styles.screen}>
      <Button title="Create goal" onPress={() => setshowtoggle(true)}></Button> 
-     <InputGoal show={showtoggle} clicked={inputGoalHandler} onchangefield={inputHandler}></InputGoal>
+     <InputGoal show={showtoggle} cancelclick={cancelHandler} clicked={inputGoalHandler} onchangefield={inputHandler}></InputGoal>
 
       <FlatList 
       keyExtractor={(item, index) => item.id}
