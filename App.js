@@ -6,6 +6,7 @@ import InputGoal from './components/InputGoal';
 export default function App() {
   const [inputGoal, setinputGoal] = useState('')
   const [courseGoals, setcourseGoals] = useState([])
+  const [showtoggle, setshowtoggle] = useState(false)
 
   const inputHandler = (textInput) => {
     setinputGoal(textInput)
@@ -13,6 +14,7 @@ export default function App() {
 
   const inputGoalHandler = () => {
     setcourseGoals(currentGoals => [...courseGoals, {/* key: */ id: Math.random().toString(), value: inputGoal}])
+    setshowtoggle(false)
   }
 
   const deleteGoalHandler = (idgoal) => {
@@ -21,11 +23,15 @@ export default function App() {
     })
   }
 
+/*   const showtoggleHandler = () => {
+    setshowtoggle(true)
+  } */
+
 
   return (
     <View style={styles.screen}>
-
-     <InputGoal clicked={inputGoalHandler} onchangefield={inputHandler}></InputGoal>
+     <Button title="Create goal" onPress={() => setshowtoggle(true)}></Button> 
+     <InputGoal show={showtoggle} clicked={inputGoalHandler} onchangefield={inputHandler}></InputGoal>
 
       <FlatList 
       keyExtractor={(item, index) => item.id}
